@@ -5,7 +5,8 @@ import { StyleSheet,
       TouchableOpacity,
       TouchableHighlight,
       TouchableWithoutFeedback,
-      TouchableNativeFeedback } from 'react-native';
+      TouchableNativeFeedback,
+     } from 'react-native';
 import AddEntry from './components/AddEntry'
 
 export default class App extends React.Component {
