@@ -3,6 +3,7 @@ import { StyleSheet,
       Text,
       View,
       Platform,
+      StatusBar,
       TouchableOpacity,
       TouchableHighlight,
       TouchableWithoutFeedback,
@@ -16,6 +17,15 @@ import reducer from './reducers'
 import { createBottomTabNavigator, createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { Constants } from 'expo'
+
+function UdaciStatusBar ({ backgroundColor, ...props }) {
+  return (
+    <View style={{backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  )
+}
 
 const RouteConfigs = {
   History: {
@@ -94,7 +104,7 @@ const Tabs =
 //   }
 // })
 
-
+// need to look into AppContainer syntax
 const AppContainer = createAppContainer(Tabs)
 
 export default class App extends React.Component {
@@ -107,7 +117,7 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
-          <View style={{height: 20}} />
+          <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
           <AppContainer />
         </View>
       </Provider>
